@@ -20,8 +20,8 @@ const navigation = [
 ]
 
 const userNavigation = [
-  { name: 'Connect Wallet', href: 'wallet', class: 'wallet' },
-  { name: 'Your Profile', href: '/frontend/profile', class: 'profile' },
+  { name: 'Connect Wallet', href: 'wallet', className: 'wallet' },
+  { name: 'Your Profile', href: '/frontend/profile', className: 'profile' },
   { name: 'Settings', href: '#' },
 ]
 

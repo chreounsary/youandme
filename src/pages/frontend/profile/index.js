@@ -1,10 +1,9 @@
-
 import Layout from "@/components/layout/frontend";
 import { useSession, getSession, signOut } from "next-auth/react";
 
 
 export default function profile() {
-  // const { data: session } = useSession();
+  const { data: session } = useSession();
   const  handleLogout= () => {
     signOut();
   }
@@ -30,7 +29,7 @@ export default function profile() {
             <div className="relative">
               <div className="w-48 h-48 bg-indigo-100 mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500">
         <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+          <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
         </svg>
               </div>
             </div>
@@ -50,6 +49,8 @@ export default function profile() {
           </div>
 
           <div className="mt-20 text-center border-b pb-12">
+            <h1 className="text-4xl font-medium text-gray-700"> {session?.user.name}, <span className="font-light text-gray-500">42</span></h1>
+            <p className="font-light text-gray-600 mt-3">{session?.user.email}, Web3</p>
 
             <p className="mt-8 text-gray-500">Engineering - Web 3 Development</p>
             <p className="mt-2 text-gray-500">University of Computer Science</p>
@@ -70,17 +71,17 @@ export default function profile() {
   )
 }
 
-// export async function getServerSideProps ({req, res, next}){
-//   const session = await getSession({req});
-//   if (!session) {
-//     return{
-//       redirect: {
-//         destination: '/login',
-//         permanent: false
-//       }
-//     }
-//   }
-//   return {
-//     props: {session}
-//   }
-// }
+export async function getServerSideProps ({req, res, next}){
+  const session = await getSession({req});
+  if (!session) {
+    return{
+      redirect: {
+        destination: '/login',
+        permanent: false
+      }
+    }
+  }
+  return {
+    props: {session}
+  }
+}
