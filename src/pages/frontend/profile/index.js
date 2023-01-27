@@ -1,9 +1,8 @@
 import Frontend from "../../../components/layout/frontend";
-
 function index() {
   return (
     <Frontend>
-     <> index pagedd</>
+      profile page
     </Frontend>
   );
 }
