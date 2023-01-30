@@ -1,20 +1,12 @@
 import { useSession, getSession, signOut } from "next-auth/react";
 import { skeletonCards } from "@/components/layout/loading";
-import { useEffect, useState } from "react";
 import Layout from "@/components/layout/frontend";
 
 export default function profile() {
-  const [loading, setLoading] = useState(true)
   const { data: session } = useSession();
   const  handleLogout= () => {
     signOut();
   }
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 30000)
-  }, []);
-  let skeletonCards = Array(3).fill(0);
   return (
       <div className="p-16">
         <div className="p-8 bg-white shadow mt-24">

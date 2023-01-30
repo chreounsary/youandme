@@ -1,16 +1,22 @@
+import BackendLayout from "@/components/layout/backend";
+import Layout from "@/components/layout/frontend";
 import { useSession, getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { useSelector } from "react-redux";
 
 // const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const { data: session } = useSession();
+  const visible = useSelector((state) => state.app.client.toggleForm)
 
   const  handleLogout= () => {
     signOut();
   }
   return (
-    <></>
+    <Layout>
+
+    </Layout>
   );
 
   function Guest() {

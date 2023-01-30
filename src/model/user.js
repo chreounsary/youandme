@@ -11,5 +11,5 @@ const userSchema = new Schema({
 })
 
 // exting willl updated else create new 
-const Users = models.users || model('users', userSchema);
+const Users = models?.users || model('users', userSchema);
 export default Users

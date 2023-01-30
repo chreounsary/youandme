@@ -8,7 +8,6 @@ function setting() {
 
 export async function getServerSideProps(ctx){
 
-
   return {
     props:{
       data:null
