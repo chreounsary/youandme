@@ -1,14 +1,21 @@
-import Layout from "@/components/layout/frontend";
 import { useSession, getSession, signOut } from "next-auth/react";
-
+import { skeletonCards } from "@/components/layout/loading";
+import { useEffect, useState } from "react";
+import Layout from "@/components/layout/frontend";
 
 export default function profile() {
+  const [loading, setLoading] = useState(true)
   const { data: session } = useSession();
   const  handleLogout= () => {
     signOut();
   }
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 30000)
+  }, []);
+  let skeletonCards = Array(3).fill(0);
   return (
-    <Layout>
       <div className="p-16">
         <div className="p-8 bg-white shadow mt-24">
           <div className="grid grid-cols-1 md:grid-cols-3">
@@ -51,6 +58,7 @@ export default function profile() {
           <div className="mt-20 text-center border-b pb-12">
             <h1 className="text-4xl font-medium text-gray-700"> {session?.user.name}, <span className="font-light text-gray-500">42</span></h1>
             <p className="font-light text-gray-600 mt-3">{session?.user.email}, Web3</p>
+            <p className="font-light text-gray-600 mt-3">{session?.user.role}, Role</p>
 
             <p className="mt-8 text-gray-500">Engineering - Web 3 Development</p>
             <p className="mt-2 text-gray-500">University of Computer Science</p>
@@ -67,7 +75,6 @@ export default function profile() {
 
         </div>
       </div>
-    </Layout>
   )
 }
 

@@ -1,4 +1,3 @@
-import Layout from "@/components/layout/frontend";
 import { useSession, getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 
@@ -11,9 +10,7 @@ export default function Home() {
     signOut();
   }
   return (
-    <Layout>
-      
-    </Layout>
+    <></>
   );
 
   function Guest() {

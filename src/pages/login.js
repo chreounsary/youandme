@@ -8,7 +8,6 @@ import Link from "next/link";
 
 const Login = () => {
   const router = useRouter();
-
   const formik = useFormik({
     initialValues: {
       email: '',

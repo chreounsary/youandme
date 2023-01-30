@@ -16,7 +16,7 @@ const navigation = [
   { name: 'Learner function', href: '/learner', current: false },
   { name: 'Content Provider ', href: '/provider', current: false },
   { name: 'Simple Lesson NFT renting ', href: '/nft_renting', current: false },
-  { name: 'Category ', href: '/category', current: false },
+  { name: 'Category ', href: '/backend/category', current: false },
 ]
 
 const userNavigation = [
