@@ -14,9 +14,9 @@ export default function Home() {
     signOut();
   }
   return (
-    <Layout>
+    <BackendLayout>
 
-    </Layout>
+    </BackendLayout>
   );
 
   function Guest() {

@@ -12,7 +12,6 @@ function index() {
   const dispatch = useDispatch()
   const handleAdd = () => {
     visible ? true : false
-    console.log(visible ,'visible');
     dispatch(toggleChangeAction())
   }
   return (
