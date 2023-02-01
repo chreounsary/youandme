@@ -4,7 +4,6 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import Link from "next/link";
-// import { LoginSchemaValidate } from "../lib/validate"
 
 const Login = () => {
   const router = useRouter();
@@ -123,7 +122,8 @@ export default Login;
 
 export async function getServerSideProps ({req, res, next}){
   const session = await getSession({req});
-  if (!session) {
+  console.log(session, 'session');
+  if (session) {
     return{
       redirect: {
         destination: '/',
