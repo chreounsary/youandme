@@ -80,7 +80,9 @@ function Tr({_id, name, email, role, is_active}){
             {is_active == true ? 'Active' : 'Disabled'}
           </span>
         </td>
-        <td className="px-6 py-4">{role}</td>
+        <td className="px-6 py-4">
+          {displayRole(role)}
+        </td>
         <td className="px-6 py-4">
           <div className="flex justify-end gap-4">
             <a x-data="{ tooltip: 'Delete' }" href="#">
@@ -105,6 +107,19 @@ function Tr({_id, name, email, role, is_active}){
       </tr>
     </>
   )
+}
+function displayRole (role){
+  let roleLabel = '';
+  if(role == 'admin'){
+    roleLabel = 'Admin';
+  }
+  if(role == 'teacher'){
+    roleLabel = 'Teacher'
+  }
+  if(role == 'student'){
+    roleLabel = 'Student'
+  }
+  return roleLabel;
 }
 
 export async function getServerSideProps(ctx){
