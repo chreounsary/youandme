@@ -9,19 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@3rdweb/hooks": "^1.9.2",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.14",
+    "@moralisweb3/next": "^2.12.0",
     "@next/font": "13.1.5",
     "@reduxjs/toolkit": "^1.9.2",
+    "@thirdweb-dev/react": "^3.7.2",
+    "@thirdweb-dev/sdk": "^3.7.2",
     "bcryptjs": "^2.4.3",
+    "ethers": "^5.7.2",
     "formik": "^2.2.9",
     "mongoose": "^6.9.0",
+    "moralis": "^2.12.0",
     "next": "13.1.5",
-    "next-auth": "^4.18.10",
+    "next-auth": "^4.19.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-query": "^3.39.3",
-    "react-redux": "^8.0.5"
+    "react-redux": "^8.0.5",
+    "wagmi": "^0.11.2"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",

@@ -14,6 +14,11 @@ function BackendLayout({children}) {
                 <Link href="/backend/category" className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
                   <i className="fas fa-user-circle mr-2 text-sm text-blueGray-400"></i>Category
                 </Link>
+
+                <Link href="/backend/lesson" className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
+                  <i className="fas fa-user-circle mr-2 text-sm text-blueGray-400"></i>Lesson
+                </Link>
+
                 <Link href="/backend/user" className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
                   <i className="fas fa-paint-brush mr-2 text-sm text-blueGray-400"></i>User
                 </Link>
@@ -33,9 +38,9 @@ function BackendLayout({children}) {
                 <form className="flex flex-row flex-wrap items-center ml-auto mr-3 mt-3">
                    <div className="mb-3 pt-0"><input placeholder="Search here" type="text" className="border-transparent shadow px-3 py-2 text-sm  w-full placeholder-blueGray-200 text-blueGray-700 relative bg-white rounded-md outline-none focus:ring focus:ring-lightBlue-500 focus:ring-1 focus:border-lightBlue-500 border border-solid transition duration-200 "/></div>
                 </form>
-                <a className="text-blueGray-500 block" href="/frontend/profile">
-                   <div className="items-center flex"><span className="w-12 h-12 text-sm text-white bg-blueGray-300 inline-flex items-center justify-center rounded-full"><img alt="..." className="w-full rounded-full align-middle border-none shadow-lg" src="https://demos.creative-tim.com/notus-pro-react/static/media/team-1-800x800.fa5a7ac2.jpg"/></span></div>
-                </a>
+                <Link href="/frontend/profile" className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
+                <div className="items-center flex"><span className="w-12 h-12 text-sm text-white bg-blueGray-300 inline-flex items-center justify-center rounded-full"><img alt="..." className="w-full rounded-full align-middle border-none shadow-lg" src="https://demos.creative-tim.com/notus-pro-react/static/media/team-1-800x800.fa5a7ac2.jpg"/></span></div>
+                </Link>
                 <div className="block z-50">
                    <div className="bg-white text-base float-left p-2 border list-none text-left rounded-lg shadow-lg min-w-48 transition-all duration-100 ease-in-out transform scale-95 opacity-0 absolute origin-top-right">
                       <a href="/frontend/profile" className="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100">Action</a><a href="#" className="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100">Another action</a><a href="#" className="text-sm px-3 py-2 block w-full whitespace-nowrap bg-transparent hover:bg-blueGray-100 rounded transition-all duration-100">Something else here</a>

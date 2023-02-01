@@ -95,6 +95,23 @@ function updateForm({ formId, formData, setFormData }) {
                   Active
                 </label>
               </div>
+              {/* <div className="flex items-center">
+                <input
+                  type="radio"
+                  defaultChecked={is_active == false}
+                  onChange={setFormData} 
+                  value={false}
+                  name="is_active"
+                  id="active"
+                  className="h-5 w-5"
+                />
+                <label
+                  for="radioButton1"
+                  className="pl-3 text-base font-medium text-[#07074D]"
+                >
+                  Inactive
+                </label>
+              </div> */}
             </div>
           </div>
           <div className="border-t mt-6 pt-3">

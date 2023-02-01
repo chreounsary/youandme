@@ -21,8 +21,8 @@ export default async function handler(req, res) {
             deleteUser(req, res)
             break;
         default : 
-            res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
-            res.status(405).end(`Method ${method} Not Allowd`)
+            // res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+            // res.status(405).end(`Method ${method} Not Allowd`)
             break;
     }
   }

@@ -1,9 +1,10 @@
 import { useSession, getSession, signOut } from "next-auth/react";
-import { skeletonCards } from "@/components/layout/loading";
 import Layout from "@/components/layout/frontend";
+import { useWeb3 } from "@3rdweb/hooks";
 
 export default function profile() {
   const { data: session } = useSession();
+  const { address, chainId, connectWallet, disconnectWallet } = useWeb3();
   const  handleLogout= () => {
     signOut();
   }
@@ -36,10 +37,20 @@ export default function profile() {
 
         <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
         <button
+          onClick={() => connectWallet("injected")}
           className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
         >
           Connect Wallet
+          {address}
+          <br/>
+          {chainId}
         </button>
+
+         {address && (
+        <button onClick={disconnectWallet}>
+          Disconnect
+        </button>
+      )}
 
         <button onClick={handleLogout} className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
         >
