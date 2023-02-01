@@ -8,6 +8,7 @@ export default function profile() {
     signOut();
   }
   return (
+    <Layout>
       <div className="p-16">
         <div className="p-8 bg-white shadow mt-24">
           <div className="grid grid-cols-1 md:grid-cols-3">
@@ -67,6 +68,7 @@ export default function profile() {
 
         </div>
       </div>
+      </Layout>
   )
 }
 

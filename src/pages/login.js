@@ -123,7 +123,7 @@ export default Login;
 
 export async function getServerSideProps ({req, res, next}){
   const session = await getSession({req});
-  if (session) {
+  if (!session) {
     return{
       redirect: {
         destination: '/',

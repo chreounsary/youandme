@@ -3,7 +3,7 @@ import { QueryClientProvider, QueryClient } from 'react-query';
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
 import { SessionProvider, useSession } from 'next-auth/react';
-import Layout from './layout';
+
 
 const queryClient = new QueryClient();
 
