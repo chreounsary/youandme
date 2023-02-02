@@ -3,7 +3,7 @@ import BackendLayout from "@/components/layout/backend";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-function layout() {
+function MainLayout() {
   const { data: session } = useSession();
   const router = useRouter()
   console.log(session, 'user');
@@ -32,4 +32,4 @@ export async function getServerSideProps(ctx){
   }
 }
 
-export default layout;
+export default MainLayout;

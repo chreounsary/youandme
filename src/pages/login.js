@@ -4,6 +4,7 @@ import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import Link from "next/link";
+import Image from 'next/image';
 
 const Login = () => {
   const router = useRouter();
@@ -49,7 +50,7 @@ const Login = () => {
                 <div class="rounded-xl bg-white shadow-xl">
                   <div class="p-6 sm:p-16">
                       <div class="space-y-4">
-                        <img src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png" loading="lazy" class="w-10" alt="tailus logo"/>
+                        <Image src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png" loading="lazy" class="w-10" alt="tailus logo"/>
                         <h2 class="mb-8 text-2xl text-cyan-900 font-bold">Sign in to your account</h2>
                       </div>
                       <div class="mt-16 grid space-y-4">
@@ -79,7 +80,7 @@ const Login = () => {
                           
                           <button  onClick={handleGoogleLogIn} class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
                             <div class="relative flex items-center space-x-4 justify-center">
-                              <img src="https://tailus.io/sources/blocks/social/preview/images/google.svg" class="absolute left-0 w-5" alt="google logo"/>
+                              <Image src="https://tailus.io/sources/blocks/social/preview/images/google.svg" class="absolute left-0 w-5" alt="google logo"/>
                               <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">Continue with Google</span>
                             </div>
                           </button>
@@ -93,7 +94,7 @@ const Login = () => {
                           </button>
                           <button onClick={handleFacebookLogIn} class="group h-12 px-6 border-2 border-gray-300 rounded-full transition duration-300 hover:border-blue-400 focus:bg-blue-50 active:bg-blue-100">
                             <div class="relative flex items-center space-x-4 justify-center">
-                              <img src="https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg" class="absolute left-0 w-5" alt="Facebook logo"/>
+                              <Image src="https://upload.wikimedia.org/wikipedia/en/0/04/Facebook_f_logo_%282021%29.svg" class="absolute left-0 w-5" alt="Facebook logo"/>
                               <span class="block w-max font-semibold tracking-wide text-gray-700 text-sm transition duration-300 group-hover:text-blue-600 sm:text-base">Continue with Facebook</span>
                             </div>
                           </button>

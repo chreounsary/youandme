@@ -18,7 +18,7 @@ function index() {
   return (
     <div>
       {navigation.map((item) => (
-        <Link href={item.path} className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
+        <Link href={item.path} key={item.name} className="text-xs uppercase py-3 font-bold block text-blueGray-800 hover:text-blueGray-500">
           <i className="fas fa-user-circle mr-2 text-sm text-blueGray-400"></i>{item.name}
         </Link>
       ))}

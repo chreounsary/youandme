@@ -1,7 +1,7 @@
 import { getUser, getUsers, updateUser } from "@/lib/helper";
 import { useMutation, useQuery, useQueryClient } from "react-query";
 
-function updateForm({ formId, formData, setFormData }) {
+function UpdateForm({ formId, formData, setFormData }) {
   const queryClient = useQueryClient()
   const {isLoading, isError, data, error} = useQuery(['users', formId], () => getUser(formId))
   const UpdateMutation = useMutation((newData) => updateUser(formId, newData), {
@@ -133,4 +133,4 @@ export async function getServerSideProps(ctx){
   }
 }
 
-export default updateForm;
+export default UpdateForm;

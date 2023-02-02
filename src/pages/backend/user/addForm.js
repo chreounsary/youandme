@@ -1,7 +1,7 @@
 import { addUser, getUsers } from "@/lib/helper";
 import { useMutation, useQueryClient } from "react-query";
 
-function addForm({ formData, setFormData }) {
+function AddForm({ formData, setFormData }) {
   const queryClient = useQueryClient()
   const addMutation = useMutation(addUser, {
     onSuccess : () => {
@@ -147,4 +147,4 @@ export async function getServerSideProps(ctx){
   }
 }
 
-export default addForm;
+export default AddForm;

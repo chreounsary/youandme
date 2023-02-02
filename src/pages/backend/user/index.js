@@ -2,12 +2,13 @@ import BackendLayout from "@/components/layout/backend";
 import { getUsers } from "@/lib/helper";
 import { toggleChangeAction, updateAction } from "@/redux/reducer";
 import { BugAntIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
 import Form from './form'
 
-function index() {
+function Index() {
   const visible = useSelector((state) => state.app.client.toggleForm)
   const { isLoading, isError, data, error } = useQuery('users', getUsers)
   const dispatch = useDispatch()
@@ -64,7 +65,7 @@ function Tr({_id, name, email, role, is_active}){
       <tr className="hover:bg-gray-50">
         <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
           <div className="relative h-10 w-10">
-            <img
+            <Image
               className="h-full w-full rounded-full object-cover object-center"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="" />
@@ -131,4 +132,4 @@ export async function getServerSideProps(ctx){
   }
 }
 
-export default index;
+export default Index;
