@@ -1,6 +1,7 @@
 import { useSession, getSession, signOut } from "next-auth/react";
 import Layout from "@/components/layout/frontend";
 import { useWeb3 } from "@3rdweb/hooks";
+import { BuildingStorefrontIcon, ChatBubbleBottomCenterTextIcon } from "@heroicons/react/20/solid";
 
 export default function profile() {
   const { data: session } = useSession();
@@ -36,21 +37,27 @@ export default function profile() {
             </div>
 
         <div className="space-x-8 flex justify-between mt-32 md:mt-0 md:justify-center">
-        <button
-          onClick={() => connectWallet("injected")}
-          className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
-        >
-          Connect Wallet
-          {address}
-          <br/>
-          {chainId}
-        </button>
+          {!address && (
+              <button
+              onClick={() => connectWallet("injected")}
+              className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+            >
+              Connect Wallet
+            </button>  
+          )}
+          
 
-         {address && (
-        <button onClick={disconnectWallet}>
-          Disconnect
-        </button>
-      )}
+        {address && (
+          <button
+            onClick={disconnectWallet}
+            className="text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+            mt="8px"
+            variant="outline"
+            bg="white"
+          >
+            Disconnect
+          </button>
+        )}
 
         <button onClick={handleLogout} className="text-white py-2 px-4 uppercase rounded bg-gray-700 hover:bg-gray-800 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
         >
@@ -62,7 +69,8 @@ export default function profile() {
           <div className="mt-20 text-center border-b pb-12">
             <h1 className="text-4xl font-medium text-gray-700"> {session?.user.name}, <span className="font-light text-gray-500">42</span></h1>
             <p className="font-light text-gray-600 mt-3">{session?.user.email}, Web3</p>
-            <p className="font-light text-gray-600 mt-3">{session?.user.role}, Role</p>
+            <p className="font-light text-gray-600 mt-3">Adress: {address}</p>
+            <p className="font-light text-gray-600 mt-3">ChainId: {chainId}</p>
 
             <p className="mt-8 text-gray-500">Engineering - Web 3 Development</p>
             <p className="mt-2 text-gray-500">University of Computer Science</p>

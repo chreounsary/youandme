@@ -11,7 +11,7 @@ import { ThirdwebWeb3Provider } from '@3rdweb/hooks';
 import "regenerator-runtime/runtime"
 
 const queryClient = new QueryClient();
-const supportedCgainsIds = [1, 4, 137];
+const supportedChainIds = [1, 4, 137, 250, 43114, 80001];
 const connectors = {
   injected: {}
 }
@@ -19,7 +19,7 @@ function App({Component, pageProps}){
   
   return (
     <ThirdwebWeb3Provider
-      supportedCgainsIds={supportedCgainsIds}
+      supportedChainIds={supportedChainIds}
       connectors={connectors}
     >
     <SessionProvider session={pageProps.session}>
