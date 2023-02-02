@@ -1,8 +1,6 @@
 import { useSession, getSession, signOut } from "next-auth/react";
 import Layout from "@/components/layout/frontend";
 import { useWeb3 } from "@3rdweb/hooks";
-import { BuildingStorefrontIcon, ChatBubbleBottomCenterTextIcon } from "@heroicons/react/20/solid";
-
 export default function profile() {
   const { data: session } = useSession();
   const { address, chainId, connectWallet, disconnectWallet } = useWeb3();

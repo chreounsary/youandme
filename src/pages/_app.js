@@ -1,8 +1,6 @@
 import '@/styles/globals.css'
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-// import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
-
 import { store } from '../redux/store';
 import { Provider } from 'react-redux';
 import { SessionProvider, useSession } from 'next-auth/react';
@@ -15,8 +13,8 @@ const supportedChainIds = [1, 4, 137, 250, 43114, 80001];
 const connectors = {
   injected: {}
 }
+
 function App({Component, pageProps}){
-  
   return (
     <ThirdwebWeb3Provider
       supportedChainIds={supportedChainIds}

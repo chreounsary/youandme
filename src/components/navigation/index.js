@@ -9,12 +9,12 @@ const navigation = [
   {name: "Upgrading", path: "/backend/upgrading"},
   {name: "NFT renting", path: "/backend/renting"},
   {name: "Rewarding", path: "/backend/rewarding"},
+  {name: "Atribute", path: "/backend/atribute"},
   {name: "Sale", path: "/backend/sale"}
 
 ]
 
 function index() {
-
   return (
     <div>
       {navigation.map((item) => (
