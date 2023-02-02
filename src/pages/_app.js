@@ -35,7 +35,6 @@ function App({Component, pageProps}){
 }
 export default App;
 
-
 export async function getServerSideProps ({req, res, next}){
   const session = await getSession({req});
   console.log(session, 'che');

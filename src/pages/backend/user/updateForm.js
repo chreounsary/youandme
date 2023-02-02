@@ -95,14 +95,14 @@ function updateForm({ formId, formData, setFormData }) {
                   Active
                 </label>
               </div>
-              {/* <div className="flex items-center">
+              <div className="flex items-center">
                 <input
                   type="radio"
                   defaultChecked={is_active == false}
                   onChange={setFormData} 
                   value={false}
                   name="is_active"
-                  id="active"
+                  id="is_active"
                   className="h-5 w-5"
                 />
                 <label
@@ -111,7 +111,7 @@ function updateForm({ formId, formData, setFormData }) {
                 >
                   Inactive
                 </label>
-              </div> */}
+              </div>
             </div>
           </div>
           <div className="border-t mt-6 pt-3">
