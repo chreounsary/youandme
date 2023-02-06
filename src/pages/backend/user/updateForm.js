@@ -16,7 +16,6 @@ function UpdateForm({ formId, formData, setFormData }) {
   const {name, email, role, is_active } = data;
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('update');
     let userName = `${formData.name ?? name}`;
     let updated = Object.assign({}, data, formData, { name: userName})
     await UpdateMutation.mutate(updated)

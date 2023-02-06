@@ -1,24 +1,52 @@
 import BackendLayout from "@/components/layout/backend";
-import { getUsers } from "@/lib/helper";
-import { toggleChangeAction, updateAction } from "@/redux/reducer";
+import Pagination from "../../../components/Pagination";
+import { deleteUser, getUsers } from "@/lib/helper";
+import { deleteAction, toggleChangeAction, updateAction } from "@/redux/reducer";
 import { BugAntIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 import { useQuery } from "react-query";
 import { useDispatch, useSelector } from "react-redux";
+import { useQueryClient } from 'react-query';
 import Form from './form'
+import { paginate } from "@/util/pagination";
+import { useState } from "react";
+
 
 function Index() {
+  const queryclient = useQueryClient();
+  const pageSize = 5;
+  const [currentPage, setCurrentPage] = useState(1);
   const visible = useSelector((state) => state.app.client.toggleForm)
+  const deleteId = useSelector(state => state.app.client.deleteId)
   const { isLoading, isError, data, error } = useQuery('users', getUsers)
   const dispatch = useDispatch()
   const handleAdd = () => {
     visible ? true : false
     dispatch(toggleChangeAction())
   }
+  const deletehandler =  async () => {
+    if(deleteId){
+      await deleteUser(deleteId);
+      await queryclient.prefetchQuery('users', getUsers)
+      await dispatch(deleteAction(null))
+    }
+  }
+  const canclehandler = async () => {
+    console.log("cancel")
+    await dispatch(deleteAction(null))
+  }
+
+  const paginateUsers = paginate(data, currentPage, pageSize);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <BackendLayout>
       { visible ? <Form></Form> : <></>}
+      { deleteId ? DeleteComponent({ deletehandler, canclehandler }) : <></>}
       <div className="flex-1 flex flex-col items-center lg:items-end justify-end px-8 mt-2">
         <div className="flex items-center space-x-4 mt-2">
           <button onClick={handleAdd} className="flex items-center bg-blue-600 hover:bg-blue-700 text-gray-100 px-4 py-2 rounded text-sm space-x-2 transition duration-100">
@@ -31,23 +59,39 @@ function Index() {
       </div>
       <div className="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
         <table className="w-full border-collapse bg-white text-left text-sm text-gray-500">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Role</th>
-              <th scope="col" className="px-6 py-4 font-medium text-gray-900">Action</th>
-            </tr>
-          </thead>
+          {TableHeader()}
           <tbody className="divide-y divide-gray-100 border-t border-gray-100">
             {
-              data?.map((obj, i) => <Tr {...obj} key={i} />)
+              paginateUsers.map((obj, i) => <Tr {...obj} key={i} />)
             }
+            <tr className="hover:bg-gray-50">
+              <td>
+              <Pagination
+                  items={data?.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
     </BackendLayout>
   );
+}
+
+function TableHeader() {
+  return (<>
+    <thead className="bg-gray-50">
+      <tr>
+        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Name</th>
+        <th scope="col" className="px-6 py-4 font-medium text-gray-900">State</th>
+        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Role</th>
+        <th scope="col" className="px-6 py-4 font-medium text-gray-900">Action</th>
+      </tr>
+    </thead>
+  </>);
 }
 
 function Tr({_id, name, email, role, is_active}){
@@ -59,16 +103,21 @@ function Tr({_id, name, email, role, is_active}){
       dispatch(updateAction(_id))
     }
   }
-
+  const onDelete = () =>  {
+    if(!visible){
+      dispatch(deleteAction(_id))
+    }
+    
+  }
   return (
     <>
       <tr className="hover:bg-gray-50">
         <th className="flex gap-3 px-6 py-4 font-normal text-gray-900">
           <div className="relative h-10 w-10">
-            <Image
+            {/* <Image
               className="h-full w-full rounded-full object-cover object-center"
               src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt="" />
+              alt="" /> */}
             <span className="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span>
           </div>
           <div className="text-sm">
@@ -87,22 +136,7 @@ function Tr({_id, name, email, role, is_active}){
         </td>
         <td className="px-6 py-4">
           <div className="flex justify-end gap-4">
-            <a x-data="{ tooltip: 'Delete' }" href="#">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
-                x-tooltip="tooltip"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
-              </svg>
-            </a>
+            <button onClick={onDelete}>Delete</button>
             <button onClick={handleUpdated}>Edit</button>
           </div>
         </td>
@@ -110,6 +144,19 @@ function Tr({_id, name, email, role, is_active}){
     </>
   )
 }
+
+function DeleteComponent({ deletehandler, canclehandler }){
+  return (
+    <div className='flex gap-5'>
+      <button>Are you sure?</button>
+      <button onClick={deletehandler} className='flex bg-red-500 text-white px-4 py-2 border rounded-md hover:bg-rose-500 hover:border-red-500 hover:text-gray-50'>
+        Yes <span className='px-1'></span></button>
+      <button onClick={canclehandler} className='flex bg-green-500 text-white px-4 py-2 border rounded-md hover:bg-gree-500 hover:border-green-500 hover:text-gray-50'>
+        No <span className='px-1'></span></button>
+    </div>
+  )
+}
+
 function displayRole (role){
   let roleLabel = '';
   if(role == 'admin'){

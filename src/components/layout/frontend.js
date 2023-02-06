@@ -7,8 +7,7 @@ import Image from 'next/image';
 const user = {
   name: 'Tom Cook',
   email: 'tom@example.com',
-  imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  imageUrl:''
 }
 const navigation = [
   { name: 'Dashboard', href: '/', current: true },
@@ -45,7 +44,7 @@ export default function Layout({children}){
                     <div className="flex-shrink-0">
                       <Image
                         className="h-8 w-8"
-                        src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png"
+                        // src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png"
                         alt="Plus Skill"
                       />
                     </div>

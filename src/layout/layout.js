@@ -45,7 +45,7 @@ export default function Layout({children}){
                     <div className="flex-shrink-0">
                       <Image
                         className="h-8 w-8"
-                        src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png"
+                        // src="https://plus-skill-web3.web.app/img/logo/logo-plus_skill.png"
                         alt="Plus Skill"
                       />
                     </div>

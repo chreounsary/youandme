@@ -1,11 +1,17 @@
 import { addUser, getUsers } from "@/lib/helper";
+import { toggleChangeAction } from "@/redux/reducer";
+import { Router, useRouter } from "next/router";
+import { NextResponse } from "next/server";
 import { useMutation, useQueryClient } from "react-query";
+import { useDispatch } from "react-redux";
 
 function AddForm({ formData, setFormData }) {
+  const dispatch = useDispatch();
   const queryClient = useQueryClient()
   const addMutation = useMutation(addUser, {
     onSuccess : () => {
       queryClient.prefetchQuery('users', getUsers)
+      dispatch(toggleChangeAction())
     }
   })
 
