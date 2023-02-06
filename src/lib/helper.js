@@ -35,7 +35,6 @@ export async function addUser(formData){
     }
 }
 
-
 // Update a new user
 export async function updateUser(userId, formData){
     const Options = {
@@ -56,7 +55,6 @@ export async function deleteUser(userId){
         method : 'DELETE',
         headers : { 'Content-Type': "application/json"},
     }
-
     const response = await fetch(`${BASE_URL}api/users/${userId}`, Options)
     const json = await response.json()
     return json;
