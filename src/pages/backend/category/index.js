@@ -2,9 +2,9 @@ import BackendLayout from "@/components/layout/backend";
 import { useSelector, useDispatch } from 'react-redux'
 
 function Index() {
-  const handleAdd = () => {
-    const visible = useSelector((state) => state.app.client.toggleForm)
-  }
+  // const handleAdd = () => {
+  //   const visible = useSelector((state) => state.app.client.toggleForm)
+  // }
 
   return (
     <BackendLayout>
@@ -15,7 +15,7 @@ function Index() {
                     <div className="relative w-full max-w-full flex-grow flex-1">
                       <button
                         type="button"
-                        onClick={handleAdd}
+                        // onClick={handleAdd}
                         class="border border-indigo-500 bg-indigo-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-indigo-600 focus:outline-none focus:shadow-outline"
                       >
                         Add New
