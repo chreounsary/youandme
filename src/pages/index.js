@@ -4,10 +4,7 @@ import { useSession, getSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
 import { useSelector } from "react-redux";
 
-import {
-  FacebookShareButton,
-  FacebookIcon,
-} from 'next-share';
+
 
 // const inter = Inter({ subsets: ['latin'] })
 
@@ -20,13 +17,6 @@ export default function Home() {
   }
   return (
     <BackendLayout>
-      <FacebookShareButton
-        url={'https://github.com/next-share'}
-        quote={'next-share is a social share buttons for your next React apps.'}
-        hashtag={'#nextshare'}
-      >
-        <FacebookIcon size={32} round />
-      </FacebookShareButton>
     </BackendLayout>
   );
 
