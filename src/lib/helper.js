@@ -1,5 +1,5 @@
 
-const BASE_URL = "https://plusskill.vercel.app/"
+const BASE_URL = "https://plusskill.vercel.app/";
 // all user
 export const getUsers = async () => {
     const response = await fetch(`${BASE_URL}api/users`)
