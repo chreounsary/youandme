@@ -1,5 +1,6 @@
 
 /** Controller */
+import Categories from '@/model/category'
 import Users from '../model/user'
 
 // get : http://localhost:3000/api/users

@@ -138,7 +138,7 @@ function Tr({_id, name, email, role, is_active}){
         <td className="px-6 py-4">
           <div className="flex justify-end gap-4">
             <button onClick={onDelete}>Delete</button>
-            <button onClick={handleUpdated}>Edit</button>
+            <button onClick={handleUpdated}>Edit User</button>
           </div>
         </td>
       </tr>

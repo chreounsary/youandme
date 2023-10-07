@@ -1,5 +1,5 @@
 
-const BASE_URL = "https://plusskill.vercel.app/";
+const BASE_URL = "http://localhost:3000/";
 // all user
 export const getUsers = async () => {
     const response = await fetch(`${BASE_URL}api/users`)
@@ -57,5 +57,28 @@ export async function deleteUser(userId){
     }
     const response = await fetch(`${BASE_URL}api/users/${userId}`, Options)
     const json = await response.json()
+    return json;
+}
+
+export async function addCategory(formData){
+    try{
+        const Options = {
+            method : 'POST',
+            headers : { 'Content-Type': "application/json"},
+            body: JSON.stringify(formData)
+        }
+        const response = await fetch(`${BASE_URL}api/category`, Options)
+        const json = await response.json()
+
+        return json;
+    }catch(error){
+        return error;
+    }
+}
+
+export const getCategory = async () => {
+    const response = await fetch(`${BASE_URL}api/category`)
+    const json = await response.json()
+
     return json;
 }
